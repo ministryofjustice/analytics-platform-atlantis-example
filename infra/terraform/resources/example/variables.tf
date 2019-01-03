@@ -1,3 +1,1 @@
-variable "lambda_sensitive_value" {
-  default = "supersecret"
-}
+variable "lambda_sensitive_value" {}
