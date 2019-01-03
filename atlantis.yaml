@@ -4,10 +4,12 @@ projects:
   dir: infra/terraform/resources/example
   workspace: production
   workflow: terrahelp
+  apply_requirements: [mergeable, approved]
 - name: test
   dir: infra/terraform/resources/example
   workspace: test
   workflow: terrahelp
+  apply_requirements: [mergeable]
 workflows:
   terrahelp:
     plan:
