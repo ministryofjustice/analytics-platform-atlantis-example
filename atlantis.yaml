@@ -1,6 +1,7 @@
 version: 2
 projects:
 - dir: infra/terraform/resources/example
+  apply_requirements: [approved, mergeable]
   workflow: terrahelp
 workflows:
   terrahelp:
