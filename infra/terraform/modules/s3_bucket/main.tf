@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket        = "${var.bucket_name}"
+  bucket        = "${var.bucket_name}-${var.env}"
   acl           = "private"
   force_destroy = true
 
