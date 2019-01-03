@@ -15,10 +15,13 @@ provider "aws" {
 module "s3" {
   source = "../../modules/s3_bucket"
 
+  env = "${terraform.workspace}"
   bucket_name = "mojap-atlantis-test-bucket"
 }
 
 module "lambda_function" {
   source          = "../../modules/lambda_function"
+
+  env = "${terraform.workspace}"
   sensitive_value = "${var.lambda_sensitive_value}"
 }
