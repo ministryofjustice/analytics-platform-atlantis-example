@@ -8,3 +8,7 @@ workflows:
       steps:
       - init
       - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
+    apply:
+      steps:
+      - init
+      - run: terraform apply -no-color $PLANFILE | terrahelp mask
