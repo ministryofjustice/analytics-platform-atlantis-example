@@ -16,9 +16,9 @@ workflows:
       steps:
       - init
       - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
-      - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
+      - run: terraform plan -no-color -out $PLANFILE | terrahelp mask | landscape --no-color
     apply:
       steps:
       - init
       - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
-      - run: terraform apply -no-color $PLANFILE | terrahelp mask
+      - run: terraform apply -no-color $PLANFILE | terrahelp mask | landscape --no-color
