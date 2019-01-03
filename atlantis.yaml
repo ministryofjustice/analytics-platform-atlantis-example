@@ -1,14 +1,24 @@
 version: 2
 projects:
-- dir: infra/terraform/resources/example
+- name: production
+  dir: infra/terraform/resources/example
+  workspace: production
   workflow: terrahelp
+  apply_requirements: [mergeable, approved]
+- name: test
+  dir: infra/terraform/resources/example
+  workspace: test
+  workflow: terrahelp
+  apply_requirements: [mergeable]
 workflows:
   terrahelp:
     plan:
       steps:
       - init
+      - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
     apply:
       steps:
       - init
+      - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform apply -no-color $PLANFILE | terrahelp mask

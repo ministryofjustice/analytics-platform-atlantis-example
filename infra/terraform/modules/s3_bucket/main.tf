@@ -1,9 +1,10 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket        = "${var.bucket_name}"
+  bucket        = "${var.bucket_name}-${var.env}"
   acl           = "private"
   force_destroy = true
 
   tags {
-    Name = "${var.bucket_name}"
+    Name = "${var.bucket_name}-${var.env}"
+    Env = "${var.env}"
   }
 }
