@@ -1,8 +1,8 @@
 version: 2
 projects:
-- name: default
+- name: production
   dir: infra/terraform/resources/example
-  workspace: default
+  workspace: production
   workflow: terrahelp
 - name: test
   dir: infra/terraform/resources/example
