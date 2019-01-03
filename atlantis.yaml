@@ -1,0 +1,10 @@
+version: 2
+projects:
+- dir: infra/terraform/resources
+  workflow: terrahelp
+workflows:
+  terrahelp:
+    plan:
+      steps:
+      - init
+      - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
