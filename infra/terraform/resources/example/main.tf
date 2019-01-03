@@ -19,9 +19,9 @@ module "s3" {
   bucket_name = "mojap-atlantis-test-bucket"
 }
 
-module "lambda_function" {
-  source          = "../../modules/lambda_function"
+// module "lambda_function" {
+//   source          = "../../modules/lambda_function"
 
-  env = "${terraform.workspace}"
-  sensitive_value = "${var.lambda_sensitive_value}"
-}
+//   env = "${terraform.workspace}"
+//   sensitive_value = "${var.lambda_sensitive_value}"
+// }
