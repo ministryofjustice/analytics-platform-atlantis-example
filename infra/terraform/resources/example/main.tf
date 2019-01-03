@@ -18,7 +18,7 @@ module "s3" {
   bucket_name = "mojap-atlantis-test-bucket"
 }
 
-// module "lambda_function" {
-//   source          = "../../modules/lambda_function"
-//   sensitive_value = "${var.lambda_sensitive_value}"
-// }
+module "lambda_function" {
+  source          = "../../modules/lambda_function"
+  sensitive_value = "${var.lambda_sensitive_value}"
+}
