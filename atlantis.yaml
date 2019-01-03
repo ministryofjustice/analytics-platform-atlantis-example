@@ -1,6 +1,12 @@
 version: 2
 projects:
-- dir: infra/terraform/resources/example
+- name: default
+  dir: infra/terraform/resources/example
+  workspace: default
+  workflow: terrahelp
+- name: test
+  dir: infra/terraform/resources/example
+  workspace: test
   workflow: terrahelp
 workflows:
   terrahelp:
