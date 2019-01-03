@@ -19,5 +19,6 @@ module "s3" {
 }
 
 module "lambda_function" {
-  source = "../../modules/lambda_function"
+  source          = "../../modules/lambda_function"
+  sensitive_value = "${var.lambda_sensitive_value}"
 }
