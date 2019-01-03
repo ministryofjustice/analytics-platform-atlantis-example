@@ -1,6 +1,7 @@
 version: 2
 projects:
-- workflow: terrahelp
+- dir: infra/terraform/resources
+  workflow: terrahelp
 workflows:
   terrahelp:
     plan:
