@@ -7,8 +7,10 @@ workflows:
     plan:
       steps:
       - init
+      - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
     apply:
       steps:
       - init
+      - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform apply -no-color $PLANFILE | terrahelp mask
