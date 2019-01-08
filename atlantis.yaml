@@ -15,6 +15,7 @@ workflows:
     plan:
       steps:
       - init
+      - run: echo "Env var test: $ENV_TEST"
       - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
     apply:
