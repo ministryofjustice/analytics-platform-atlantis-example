@@ -24,4 +24,5 @@ module "lambda_function" {
 
   env = "${terraform.workspace}"
   sensitive_value = "${var.lambda_sensitive_value}"
+  
 }
