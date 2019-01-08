@@ -15,7 +15,6 @@ workflows:
     plan:
       steps:
       - init
-      - run: echo "Env var test - $ATLANTIS_LOG_LEVEL - $ENV_TEST"
       - run: terraform workspace select $WORKSPACE || terraform workspace new $WORKSPACE
       - run: terraform plan -no-color -out $PLANFILE | terrahelp mask
     apply:
