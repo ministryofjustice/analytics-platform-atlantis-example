@@ -10,6 +10,8 @@ projects:
   workspace: test
   workflow: terrahelp
   apply_requirements: [mergeable]
+  autoplan:
+    enabled: true
 workflows:
   terrahelp:
     plan:
