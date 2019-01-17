@@ -17,8 +17,8 @@ resource "aws_iam_role" "hello_world" {
 }
 
 resource "aws_lambda_function" "hello_world" {
-  filename         = "${path.module}/hello_world.zip"
-  source_code_hash = "${data.archive_file.hello_world.output_base64sha256}"
+  filename         = "${path.module}/hello.py.zip"
+  source_code_hash = "${base64sha256(file("${path.module}/hello.py.zip"))}"
   function_name    = "tf_enterprise_hello_world_${var.env}"
   role             = "${aws_iam_role.hello_world.arn}"
   handler          = "hello_handler"
