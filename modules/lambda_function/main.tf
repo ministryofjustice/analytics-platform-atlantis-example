@@ -1,17 +1,3 @@
-resource "random_id" "id" {
-  byte_length = 8
-  
-  keepers {
-    timestamp = "${timestamp()}" # force change on every execution
-  }
-}
-
-data "archive_file" "hello_world" {
-  type        = "zip"
-  source_dir  = "${path.module}/hello_world"
-  output_path = "/tmp/hello_world.${random_id.id.dec}.zip"
-}
-
 data "aws_iam_policy_document" "hello_world" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -31,7 +17,7 @@ resource "aws_iam_role" "hello_world" {
 }
 
 resource "aws_lambda_function" "hello_world" {
-  filename         = "/tmp/hello_world.zip"
+  filename         = "${path.module}/hello_world.zip"
   source_code_hash = "${data.archive_file.hello_world.output_base64sha256}"
   function_name    = "tf_enterprise_hello_world_${var.env}"
   role             = "${aws_iam_role.hello_world.arn}"
