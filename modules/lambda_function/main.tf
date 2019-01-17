@@ -24,7 +24,6 @@ resource "aws_lambda_function" "hello_world" {
   handler          = "hello_handler"
   runtime          = "python3.6"
   timeout          = 300
-  depends_on       = ["data.archive_file.hello_world"]
 
   environment {
     variables = {
