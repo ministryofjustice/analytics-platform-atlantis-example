@@ -1,7 +1,13 @@
+resource "random_id" "id" {
+  keepers {
+    timestamp = "${timestamp()}" # force change on every execution
+  }
+}
+
 data "archive_file" "hello_world" {
   type        = "zip"
   source_dir  = "${path.module}/hello_world"
-  output_path = "/tmp/hello_world.zip"
+  output_path = "/tmp/hello_world.${resource.random_id.id.dec}.zip"
 }
 
 data "aws_iam_policy_document" "hello_world" {
