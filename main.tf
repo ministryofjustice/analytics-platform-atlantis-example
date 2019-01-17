@@ -15,13 +15,13 @@ provider "aws" {
 module "s3" {
   source = "modules/s3_bucket"
 
-  env = "${terraform.workspace}"
+  env = "${var.env}"
   bucket_name = "${var.bucket_name}"
 }
 
 module "lambda_function" {
   source          = "modules/lambda_function"
 
-  env = "${terraform.workspace}"
+  env = "${var.env}"
   sensitive_value = "${var.lambda_sensitive_value}"
 }
